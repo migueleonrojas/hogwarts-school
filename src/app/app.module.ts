@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,8 +25,18 @@ import { MatIconModule } from'@angular/material/icon';
 import { NewStudentApplicationComponent } from './views/new-student-application/new-student-application.component';
 import { NewsStudentsComponent } from './views/news-students/news-students.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {  MatToolbarModule } from '@angular/material/toolbar';
+import {  MatSidenavModule } from '@angular/material/sidenav';
+import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './navigation/header/header.component';
+import { MatListModule } from '@angular/material/list';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
+   schemas:[
+      CUSTOM_ELEMENTS_SCHEMA 
+   ],
   declarations: [
     AppComponent,
     StudentsComponent,
@@ -34,7 +44,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     TeachersComponent,
     DatePipe,
     NewStudentApplicationComponent,
-    NewsStudentsComponent
+    NewsStudentsComponent,
+    HeaderComponent,
+    SidenavListComponent,
+    
     
   ],
   imports: [
@@ -56,15 +69,30 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatTabsModule,
+    CommonModule,
+    MatListModule,
+    MatMenuModule
     
     
+  ],
+  exports: [
+   MatTabsModule,
+   MatSidenavModule,
+   MatToolbarModule,
+   MatListModule,
+   MatMenuModule
+   
   ],
   providers: [
    CharactersService,
+   
  
    
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

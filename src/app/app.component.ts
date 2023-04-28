@@ -11,11 +11,22 @@ import { Router } from '@angular/router';
 export class AppComponent {
   links = ['characters', 'students', 'new-student' ,'teachers'];
   titles = ['Personajes', 'Estudiantes','Nuevos Estudiantes', 'Profesores'];
-  title = 'hogwarts-school';
   activeLink = this.links[0];
+  title = 'hogwarts-school';
   myColor:ThemePalette = "accent";
 
   constructor(
    private router:Router
-  ) {}
+  ) {
+   router.navigate(['/characters']);
+  }
+
+  changeActiveUrl(event:Event){
+
+     let index = this.links.indexOf(event.toString());
+     
+     this.activeLink = this.links[index];
+   
+
+  }
 }
